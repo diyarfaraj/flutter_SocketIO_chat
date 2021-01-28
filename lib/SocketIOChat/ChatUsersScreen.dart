@@ -17,13 +17,31 @@ class _ChatUsersScreenState extends State<ChatUsersScreen> {
     // TODO: implement initState
     super.initState();
 
-    _chatUsers = G.getUsersFor(user)
+    _chatUsers = G.getUsersFor(G.loggedInUser);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Chat usrs screen")),
-      body: Text("chatting here"),
-    );
+        appBar: AppBar(title: Text("Chat usrs screen")),
+        body: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: [
+              Expanded(
+                  child: ListView.builder(
+                itemCount: _chatUsers.length,
+                itemBuilder: (context, index) {
+                  User user = _chatUsers[index];
+                  return ListTile(
+                    title: Text(user.name),
+                    subtitle: Text("ID: ${user.id} Email: ${user.email}"),
+                  );
+                },
+              ))
+            ],
+          ),
+        ));
   }
 }

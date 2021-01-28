@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_websocket/SocketIOChat/ChatUsersScreen.dart';
+import 'package:flutter_websocket/SocketIOChat/Global.dart';
+import 'package:flutter_websocket/SocketIOChat/User.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String ROUTE_ID = 'login_screen';
@@ -9,7 +11,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _usernameController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _usernameController = TextEditingController();
+    G.initDummyUsers();
+    ;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +67,13 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_usernameController.text.isEmpty) {
       return;
     }
+
+    User me = G.dummyUsers[0];
+
+    if (_usernameController.text != 'a') {
+      me = G.dummyUsers[1];
+    }
+    G.loggedInUser = me;
     _openChatListUsersScreen(context);
   }
 

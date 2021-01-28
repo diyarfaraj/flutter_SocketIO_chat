@@ -1,9 +1,9 @@
 import 'User.dart';
-import 'SocketUtils.dart';
+//import 'SocketUtils.dart';
 
 class G {
   // Socket
-  static SocketUtils socketUtils;
+  //static SocketUtils socketUtils;
   static List<User> dummyUsers;
 
   // Logged In User
@@ -12,15 +12,15 @@ class G {
   // Single Chat - To Chat User
   static User toChatUser;
 
-  static initSocket() {
+  /*  static initSocket() {
     if (null == socketUtils) {
       socketUtils = SocketUtils();
     }
-  }
+  } */
 
   static void initDummyUsers() {
-    User userA = new User(id: 1000, name: 'ABror', email: 'testa@gmail.com');
-    User userB = new User(id: 1001, name: 'BBror', email: 'testb@gmail.com');
+    User userA = new User(id: 1000, name: 'b', email: 'testa@gmail.com');
+    User userB = new User(id: 1001, name: 'a', email: 'testb@gmail.com');
     dummyUsers = List<User>();
     dummyUsers.add(userA);
     dummyUsers.add(userB);
